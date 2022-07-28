@@ -6,7 +6,17 @@ export const saveUserData = (email) => ({
   email,
 });
 
-export const saveWalletData = (data) => ({
+export const getCurrenciesData = (data) => ({
   type: SAVE_WALLET,
   data,
 });
+
+export const getCurrencies = () => async (dispatch) => {
+  try {
+    const response = await (await fetch('https://economia.awesomeapi.com.br/json/all')).json();
+    const currenciesArray = Object.keys(response).filter((moeda) => moeda !== 'USDT');
+    dispatch(getCurrenciesData(currenciesArray));
+  } catch (error) {
+    console.log(error);
+  }
+};
