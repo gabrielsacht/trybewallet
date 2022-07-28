@@ -10,39 +10,23 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
-      valid: false,
     };
-
-    this.handleChange = this.handleChange.bind(this);
   }
 
   handleClick = () => {
     const { history, saveUser } = this.props;
     const { email } = this.state;
     saveUser(email);
-    history.push('/carteira');
-  }
-
-  validate = () => {
-    const { email, password } = this.state;
-    const pswd = password.split('');
-    const SIX = 6;
-    console.log(pswd);
-    if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email) && pswd.length >= SIX) {
-      return (true);
-    }
-    return (false);
+    history.push('/');
   }
 
   handleChange({ target }) {
     const { name, value } = target;
-    this.setState({ [name]: value }, () => {
-      this.setState({ valid: this.validate() });
-    });
+    this.setState({ [name]: value });
   }
 
   render() {
-    const { email, password, valid } = this.state;
+    const { email, password } = this.state;
     return (
       <form>
         <fieldset>
@@ -73,11 +57,7 @@ class Login extends Component {
             />
           </label>
 
-          <button
-            type="button"
-            onClick={ this.handleClick }
-            disabled={ !valid }
-          >
+          <button type="button" onClick={ this.handleClick }>
             Entrar
           </button>
         </fieldset>
