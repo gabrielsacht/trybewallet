@@ -1,4 +1,4 @@
-import { SAVE_WALLET, SAVE_TASK, SAVE_CASH } from '../actions';
+import { SAVE_WALLET, SAVE_TASK, SAVE_CASH, DELETE_TASK } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [], // array de string
@@ -6,6 +6,7 @@ const INITIAL_STATE = {
   editor: false, // valor booleano que indica de uma despesa está sendo editada
   idToEdit: 0,
   cash: 0, // valor numérico que armazena o id da despesa que esta sendo editada
+  idTasking: 0,
 };
 
 const wallet = (state = INITIAL_STATE, action) => {
@@ -19,11 +20,17 @@ const wallet = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       expenses: [...state.expenses, action.task],
+      idTasking: state.idTasking + 1,
     };
   case SAVE_CASH:
     return {
       ...state,
       cash: Number(action.cash),
+    };
+  case DELETE_TASK:
+    return {
+      ...state,
+      expenses: action.task,
     };
   default:
     return state;

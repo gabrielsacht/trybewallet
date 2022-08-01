@@ -144,7 +144,7 @@ class WalletForm extends Component {
 
 const mapStateToProps = (state) => ({
   currencyy: state.wallet.currencies,
-  idTask: state.wallet.expenses.length,
+  idTask: state.wallet.idTasking,
 });
 
 const mapDispatchToProps = (dispatch) => ({

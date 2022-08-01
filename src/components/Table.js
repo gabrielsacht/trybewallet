@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { deleteTask as deleteTaskAction } from '../redux/actions/index';
+
 class Table extends Component {
   bringCoinName = (id) => {
     const { expenses } = this.props;
-    const dispesa = expenses[id];
+    const dispesa = expenses.find((item) => item.id === id);
     const moeda = dispesa.currency;
     return dispesa.exchangeRates[moeda].name;
   }
 
   bringCambio = (id) => {
     const { expenses } = this.props;
-    const dispesa = expenses[id];
+    const dispesa = expenses.find((item) => item.id === id);
     const moeda = dispesa.currency;
     const cambio = Number(dispesa.exchangeRates[moeda].ask);
     return cambio.toFixed(2);
@@ -20,11 +22,19 @@ class Table extends Component {
 
   bringValorConvertido = (id) => {
     const { expenses } = this.props;
-    const dispesa = expenses[id];
+    const dispesa = expenses.find((item) => item.id === id);
     const moeda = dispesa.currency;
     const valor = Number(dispesa.value);
     const cambio = Number(dispesa.exchangeRates[moeda].ask);
     return (valor * cambio).toFixed(2);
+  }
+
+  deleteTaskBtn = ({ target }) => {
+    const { expenses, deleteTask } = this.props;
+    const newExpenses = expenses.filter((item) => item.id !== Number(target.id));
+    // console.log(newExpenses);
+    if (newExpenses.length === 0) deleteTask([]);
+    else deleteTask(newExpenses);
   }
 
   render() {
@@ -45,34 +55,47 @@ class Table extends Component {
           </tr>
         </thead>
         <tbody>
-          {expenses.map((dispesa) => (
-            <tr key={ dispesa.id }>
-              <td>
-                {dispesa.description}
-              </td>
-              <td>
-                {dispesa.tag}
-              </td>
-              <td>
-                {dispesa.method}
-              </td>
-              <td>
-                {Number(dispesa.value).toFixed(2)}
-              </td>
-              <td>
-                {this.bringCoinName(dispesa.id)}
-              </td>
-              <td>
-                {this.bringCambio(dispesa.id)}
-              </td>
-              <td>
-                {this.bringValorConvertido(dispesa.id)}
-              </td>
-              <td>
-                Real
-              </td>
-            </tr>
-          ))}
+          { expenses.lenght !== 0 && (
+            expenses.map((dispesa) => (
+              <tr key={ dispesa.id }>
+                <td>
+                  {dispesa.description}
+                </td>
+                <td>
+                  {dispesa.tag}
+                </td>
+                <td>
+                  {dispesa.method}
+                </td>
+                <td>
+                  {Number(dispesa.value).toFixed(2)}
+                </td>
+                <td>
+                  {this.bringCoinName(dispesa.id)}
+                </td>
+                <td>
+                  {this.bringCambio(dispesa.id)}
+                </td>
+                <td>
+                  {this.bringValorConvertido(dispesa.id)}
+                </td>
+                <td>
+                  Real
+                </td>
+                <td>
+                  <button
+                    key={ dispesa.id }
+                    id={ dispesa.id }
+                    data-testid="delete-btn"
+                    type="button"
+                    onClick={ this.deleteTaskBtn }
+                  >
+                    excluir
+                  </button>
+                </td>
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
     );
@@ -83,8 +106,13 @@ const mapStateToProps = (state) => ({
   expenses: state.wallet.expenses,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  deleteTask: (task) => dispatch(deleteTaskAction(task)),
+});
+
 Table.propTypes = {
   expenses: PropTypes.arrayOf(PropTypes.object).isRequired,
+  deleteTask: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps)(Table);
+export default connect(mapStateToProps, mapDispatchToProps)(Table);

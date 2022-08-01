@@ -2,6 +2,7 @@ export const SAVE_USER = 'SAVE_USER';
 export const SAVE_WALLET = 'SAVE_WALLET';
 export const SAVE_TASK = 'SAVE_TASK';
 export const SAVE_CASH = 'SAVE_CASH';
+export const DELETE_TASK = 'DELETE_TASK';
 // USER REDUCER
 
 export const saveUserData = (email) => ({
@@ -24,6 +25,11 @@ export const saveTaskData = (task) => ({
 export const saveCash = (cash) => ({
   type: SAVE_CASH,
   cash,
+});
+
+export const deleteTask = (task) => ({
+  type: DELETE_TASK,
+  task,
 });
 
 export const getCurrencies = () => async (dispatch) => {
