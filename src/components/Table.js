@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { deleteTask as deleteTaskAction } from '../redux/actions/index';
+import { deleteTask as deleteTaskAction,
+  editCall as editCallAction } from '../redux/actions/index';
 
 class Table extends Component {
   bringCoinName = (id) => {
@@ -35,6 +36,11 @@ class Table extends Component {
     // console.log(newExpenses);
     if (newExpenses.length === 0) deleteTask([]);
     else deleteTask(newExpenses);
+  }
+
+  editTaskBtn = ({ target }) => {
+    const { editCall } = this.props;
+    editCall(Number(target.id));
   }
 
   render() {
@@ -84,13 +90,20 @@ class Table extends Component {
                 </td>
                 <td>
                   <button
-                    key={ dispesa.id }
                     id={ dispesa.id }
                     data-testid="delete-btn"
                     type="button"
                     onClick={ this.deleteTaskBtn }
                   >
                     excluir
+                  </button>
+                  <button
+                    id={ dispesa.id }
+                    data-testid="edit-btn"
+                    type="button"
+                    onClick={ this.editTaskBtn }
+                  >
+                    editar
                   </button>
                 </td>
               </tr>
@@ -108,11 +121,13 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   deleteTask: (task) => dispatch(deleteTaskAction(task)),
+  editCall: (id) => dispatch(editCallAction(id)),
 });
 
 Table.propTypes = {
   expenses: PropTypes.arrayOf(PropTypes.object).isRequired,
   deleteTask: PropTypes.func.isRequired,
+  editCall: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);

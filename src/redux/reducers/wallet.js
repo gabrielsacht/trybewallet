@@ -1,4 +1,5 @@
-import { SAVE_WALLET, SAVE_TASK, SAVE_CASH, DELETE_TASK } from '../actions';
+import { SAVE_WALLET, SAVE_TASK, SAVE_CASH, DELETE_TASK, EDIT_CALL,
+  EDIT_TASK } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [], // array de string
@@ -31,6 +32,18 @@ const wallet = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       expenses: action.task,
+    };
+  case EDIT_CALL:
+    return {
+      ...state,
+      editor: true,
+      idToEdit: action.id,
+    };
+  case EDIT_TASK:
+    return {
+      ...state,
+      expenses: action.task,
+      editor: false,
     };
   default:
     return state;
