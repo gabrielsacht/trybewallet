@@ -20,7 +20,6 @@ class Wallet extends React.Component {
   renderCash = () => {
     const { expenses, saveCash } = this.props;
     const valuees = [];
-    console.log(expenses[0]);
     expenses.forEach((item) => {
       const { currency, value, exchangeRates } = item;
       const mult = exchangeRates[currency].ask;
