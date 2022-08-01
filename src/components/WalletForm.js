@@ -59,7 +59,7 @@ class WalletForm extends Component {
     return (
       <fieldset>
         <label htmlFor="value">
-          value:
+          Valor:
           {' '}
           <input
             data-testid="value-input"
@@ -84,7 +84,7 @@ class WalletForm extends Component {
         </label>
         <label htmlFor="currency">
           {' '}
-          currency:
+          Moeda:
           {' '}
           <select
             data-testid="currency-input"
@@ -92,8 +92,8 @@ class WalletForm extends Component {
             onChange={ this.handleChange }
             value={ currency }
           >
-            { currencyy.map((coin) => (
-              <option key={ coin } value={ coin }>{ coin }</option>
+            {currencyy.map((coin) => (
+              <option key={ coin } value={ coin }>{coin}</option>
             ))}
           </select>
         </label>

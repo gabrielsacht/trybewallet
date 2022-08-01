@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import WalletForm from '../components/WalletForm';
+import Table from '../components/Table';
 import { getCurrencies as getCurrenciesAction,
   saveCash as saveCashAction } from '../redux/actions/index';
 
@@ -50,6 +51,7 @@ class Wallet extends React.Component {
           </fieldset>
         </header>
         <WalletForm />
+        <Table />
       </>
     );
   }
