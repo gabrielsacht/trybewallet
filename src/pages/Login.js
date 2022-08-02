@@ -44,44 +44,50 @@ class Login extends Component {
   render() {
     const { email, password, valid } = this.state;
     return (
-      <form>
-        <fieldset>
-          <label htmlFor="email">
-            e-mail:
-            <input
-              type="email"
-              name="email"
-              data-testid="email-input"
-              placeholder="e-mail"
-              value={ email }
-              onChange={ this.handleChange }
-              required
-            />
-          </label>
+      <div id="login">
+        <form className="card">
+          <div className="card-header">
+            <h2>Login</h2>
+          </div>
+          <div className="card-content">
+            <label htmlFor="email">
+              e-mail:
+              <input
+                type="email"
+                name="email"
+                data-testid="email-input"
+                placeholder="e-mail"
+                value={ email }
+                onChange={ this.handleChange }
+                required
+              />
+            </label>
 
-          <label htmlFor="password">
-            senha:
-            <input
-              type="password"
-              name="password"
-              data-testid="password-input"
-              placeholder="senha"
-              minLength={ 6 }
-              value={ password }
-              onChange={ this.handleChange }
-              required
-            />
-          </label>
+            <label htmlFor="password">
+              senha:
+              <input
+                type="password"
+                name="password"
+                data-testid="password-input"
+                placeholder="senha"
+                minLength={ 6 }
+                value={ password }
+                onChange={ this.handleChange }
+                required
+              />
+            </label>
 
-          <button
-            type="button"
-            onClick={ this.handleClick }
-            disabled={ !valid }
-          >
-            Entrar
-          </button>
-        </fieldset>
-      </form>
+            <button
+              id="btn-submit"
+              type="button"
+              onClick={ this.handleClick }
+              disabled={ !valid }
+            >
+              Entrar
+            </button>
+          </div>
+        </form>
+      </div>
     );
   }
 }
