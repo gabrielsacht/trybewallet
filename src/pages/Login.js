@@ -20,7 +20,7 @@ class Login extends Component {
     const { history, saveUser } = this.props;
     const { email } = this.state;
     saveUser(email);
-    history.push('/carteira');
+    history.push('/trybewallet/carteira');
   }
 
   validate = () => {
