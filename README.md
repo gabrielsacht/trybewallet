@@ -1,5 +1,5 @@
 ## Carteira de despesas financeiras!
-#Descrição
+# Descrição
 Esse é projeto desenvolvido usando:
 * React
 * Redux
