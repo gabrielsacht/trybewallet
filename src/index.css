@@ -37,7 +37,7 @@ code {
 
   border-radius: 2px;
 
-  width:280px;
+  width:350px;
 
 }
 
@@ -45,13 +45,17 @@ code {
 
   padding-bottom: 50px;
 
-  opacity: 0.8;
+  /* opacity: 0.8; */
 
   color: #fff;
 
 }
 
-.card-header::after {
+.card-header h2 {
+  text-align: center;
+}
+
+/* .card-header::after {
 
   content: "";
 
@@ -67,7 +71,7 @@ code {
 
   margin-left: -5px;
 
-}
+} */
 
 .card-content-area {
 
@@ -84,7 +88,7 @@ code {
 
   color: #fff;
 
-  font-size: 12px;
+  font-size: 16px;
 
   opacity: 0.8;
 
@@ -106,9 +110,14 @@ code {
 
 }
 
+#btn-submit:disabled {
+  background-color: #e1e1e1;
+  color: #2E344F;
+}
+
 #login input {
 
-  margin-top: 10px;
+  /* margin-top: 10px; */
 
   padding:0 5px;
 
