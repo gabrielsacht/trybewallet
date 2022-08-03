@@ -12,7 +12,7 @@ class App extends Component {
       <Provider store={ store }>
         <Switch>
           <Route exact path="/trybewallet" component={ Login } />
-          <Route path="/trybewallet/carteira" component={ Wallet } />
+          <Route path="/carteira" component={ Wallet } />
         </Switch>
       </Provider>
     );
