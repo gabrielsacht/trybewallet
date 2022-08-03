@@ -1,16 +1,22 @@
-# 🚧 README em construção 🚧
+# Carteira de despesas financeiras! 🤑
 
-<!-- Olá, Tryber!
+## Descrição
 
-Esse é apenas um arquivo inicial para o README do seu projeto.
+Aplicativo para controle de gastos financeiros com conversor de moeda!
 
-É essencial que você preencha esse documento por conta própria, ok?
+Esse projeto foi desenvolvido usando:
+* React
+* Redux
+* consulta a API de cotação de moedas: (https://economia.awesomeapi.com.br/json/all)
 
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
+# Intruções
 
-⚠️ IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
+para acessar o diretamente o app, acessar o link: https://gabrielsacht.github.io/trybewallet/
 
--->
+caso queira rodar em sua máquina:
+
+* clonar o repositorio em sua maquina local
+  * `git clone git@github.com:gabrielsacht/trybewallet.git`
+* acessar o diretório `trybewallet`
+* instalar as dependencais usando `npm install`
+* rodar o app usando `npm start`
