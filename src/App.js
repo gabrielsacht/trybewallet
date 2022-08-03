@@ -11,8 +11,8 @@ class App extends Component {
     return (
       <Provider store={ store }>
         <Switch>
-          <Route exact path="/" component={ Login } />
-          <Route exact path="/carteira" component={ Wallet } />
+          <Route exact path="/trybewallet" component={ Login } />
+          <Route exact path="/trybewallet/carteira" component={ Wallet } />
         </Switch>
       </Provider>
     );
