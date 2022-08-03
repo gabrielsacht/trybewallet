@@ -37,7 +37,7 @@ code {
 
   border-radius: 2px;
 
-  width:350px;
+  width:400px;
 
 }
 
@@ -84,7 +84,10 @@ code {
 }
 
 .card-content label {
+  height: 30px;
+
   display: flex;
+
 
   color: #fff;
 
